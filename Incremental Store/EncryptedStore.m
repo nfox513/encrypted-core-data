@@ -427,8 +427,7 @@ static NSString * const EncryptedStoreMetadataTableName = @"meta";
                     [columns addObject:typeColumn];
 
                     // Create the join
-                    NSString *join = [NSString stringWithFormat:@" INNER JOIN %@ ON %@.__objectid=%@.%@", destinationTable, destinationTable, table, column];
-                    
+                    NSString *join = [NSString stringWithFormat:@" INNER JOIN %@ AS %@ ON %@.__objectid=%@.%@", destinationTable, destinationEntity.name, destinationEntity.name, table, column];
                     
                     // this part handles optional relationship
                     if (relationship.optional) {
